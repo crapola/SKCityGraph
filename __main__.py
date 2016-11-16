@@ -1,17 +1,19 @@
 import graphviz
 
+
+
 graph_attr={'rankdir':'LR','bgcolor':'#444444'}
 node_attr={'style':'filled','fillcolor':'#002244','color':'#FF0000','shape':'rectangle',
 	'fontname':'Verdana','fontsize':'11.0','fontcolor':'#FFFFFF'}
 edge_attr={'color':'#FFAA00'}
 
-g=graphviz.Digraph('City tree','Comment','tree',None,'svg',None,None,
+g=graphviz.Digraph('City Graph','A visualization...','tree',None,'svg',None,None,
 	graph_attr,node_attr,edge_attr)
 
 longtext="""Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/>
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut<br/>
-aliquip ex ea commodo consequat.<br align="left"/>
+aliquip ex ea commodo consequat.<br/>
 """
 # First char must be < not a newline
 
