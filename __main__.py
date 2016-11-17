@@ -1,10 +1,11 @@
+import sk
 import graphviz
 
-
+sk.check_path()
 
 graph_attr={'rankdir':'LR','bgcolor':'#444444'}
-node_attr={'style':'filled','fillcolor':'#002244','color':'#FF0000','shape':'rectangle',
-	'fontname':'Verdana','fontsize':'11.0','fontcolor':'#FFFFFF'}
+node_attr={'style':'filled','fillcolor':'#440000','color':'#FFCC00','shape':'rectangle',
+	'fontname':'Verdana','fontsize':'12.0','fontcolor':'#FFFFFF'}
 edge_attr={'color':'#FFAA00'}
 
 g=graphviz.Digraph('City Graph','A visualization...','tree',None,'svg',None,None,
@@ -15,6 +16,7 @@ sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut<br/>
 aliquip ex ea commodo consequat.<br/>
 """
+
 # First char must be < not a newline
 
 label="""<
@@ -26,7 +28,7 @@ label="""<
 	<TD>
 		<TABLE border="0" cellborder="1" cellspacing="0" cellpadding="2">
 			<TR><TD align="left">Name</TD></TR>
-			<TR><TD align="left" balign="left" valign="top" height="80%">"""+longtext+"""</TD></TR>
+			<TR><TD align="left" balign="left" valign="top">"""+longtext+"""</TD></TR>
 			<TR><TD align="left">9001</TD></TR>
 		</TABLE>
 	</TD>
