@@ -1,16 +1,10 @@
 import sk
 import graphviz
-from graph import citygraph_node
+import graph
 
 sk.check_path()
-
-graph_attr={'rankdir':'LR','bgcolor':'#444444'}
-node_attr={'style':'filled','fillcolor':'#220000','color':'#FFCC00','shape':'rectangle',
-	'fontname':'Verdana','fontsize':'12.0','fontcolor':'#FFFFFF'}
-edge_attr={'color':'#FFCC00'}
-
-g=graphviz.Digraph('City Graph','A visualization...','tree',None,'svg',None,None,
-	graph_attr,node_attr,edge_attr)
+sk.load_improvements()
+g=graph.citygraph()
 
 longtext="""Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/>
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
@@ -19,8 +13,8 @@ aliquip ex ea commodo consequat.<br/>
 """
 
 nodes=(
-citygraph_node('A','test.png','Display Name!',longtext,112212),
-citygraph_node('B','test.png','Display Name!22','blah...',212),
+graph.citygraph_node('A','test.png','Display Name!',longtext,112212),
+graph.citygraph_node('B','test.png','Display Name!22','blah...',212),
 ('Z',{}),
 ('Unit12435',{})
 )
