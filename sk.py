@@ -1,3 +1,7 @@
+"""
+Functions used to access Sorcerer King data.
+"""
+
 from config import GAME_PATH
 import os
 

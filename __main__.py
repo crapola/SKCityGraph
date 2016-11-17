@@ -1,12 +1,13 @@
 import sk
 import graphviz
+from graph import citygraph_node
 
 sk.check_path()
 
 graph_attr={'rankdir':'LR','bgcolor':'#444444'}
-node_attr={'style':'filled','fillcolor':'#440000','color':'#FFCC00','shape':'rectangle',
+node_attr={'style':'filled','fillcolor':'#220000','color':'#FFCC00','shape':'rectangle',
 	'fontname':'Verdana','fontsize':'12.0','fontcolor':'#FFFFFF'}
-edge_attr={'color':'#FFAA00'}
+edge_attr={'color':'#FFCC00'}
 
 g=graphviz.Digraph('City Graph','A visualization...','tree',None,'svg',None,None,
 	graph_attr,node_attr,edge_attr)
@@ -20,7 +21,7 @@ aliquip ex ea commodo consequat.<br/>
 # First char must be < not a newline
 
 label="""<
-<TABLE border="0" cellpadding="0" cellspacing="0">
+<TABLE border="0" cellpadding="0" cellspacing="0" color="#880000">
 <TR>
 	<TD width="64" height="64" fixedsize="true" >
 		<IMG SRC="test.png"/>
@@ -28,7 +29,7 @@ label="""<
 	<TD>
 		<TABLE border="0" cellborder="1" cellspacing="0" cellpadding="2">
 			<TR><TD align="left">Name</TD></TR>
-			<TR><TD align="left" balign="left" valign="top">"""+longtext+"""</TD></TR>
+			<TR><TD align="left" balign="left" valign="top"><FONT color="#AAAAAA" point-size="10">"""+longtext+"""</FONT></TD></TR>
 			<TR><TD align="left">9001</TD></TR>
 		</TABLE>
 	</TD>
@@ -40,7 +41,7 @@ nodes=(
 ('A',{'label':label,
 	'margin':'0.04',
 	'imagescale':'true'}),
-('B',{}),
+citygraph_node('Swaaa','','Display Name!','blah...',112212),
 ('Z',{}),
 ('Unit12435',{})
 )
