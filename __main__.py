@@ -18,30 +18,9 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut<br/>
 aliquip ex ea commodo consequat.<br/>
 """
 
-# First char must be < not a newline
-
-label="""<
-<TABLE border="0" cellpadding="0" cellspacing="0" color="#880000">
-<TR>
-	<TD width="64" height="64" fixedsize="true" >
-		<IMG SRC="test.png"/>
-	</TD>
-	<TD>
-		<TABLE border="0" cellborder="1" cellspacing="0" cellpadding="2">
-			<TR><TD align="left">Name</TD></TR>
-			<TR><TD align="left" balign="left" valign="top"><FONT color="#AAAAAA" point-size="10">"""+longtext+"""</FONT></TD></TR>
-			<TR><TD align="left">9001</TD></TR>
-		</TABLE>
-	</TD>
-</TR>
-</TABLE>
->"""
-
 nodes=(
-('A',{'label':label,
-	'margin':'0.04',
-	'imagescale':'true'}),
-citygraph_node('Swaaa','','Display Name!','blah...',112212),
+citygraph_node('A','test.png','Display Name!',longtext,112212),
+citygraph_node('B','test.png','Display Name!22','blah...',212),
 ('Z',{}),
 ('Unit12435',{})
 )
