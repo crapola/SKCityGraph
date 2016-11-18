@@ -3,6 +3,7 @@ Functions used to access Sorcerer King data.
 """
 
 from config import GAME_PATH
+import improvement
 import os
 import xml.etree.ElementTree
 
@@ -17,32 +18,20 @@ Open config.py and make it point to Sorcerer King's game root folder.")
 
 def load_improvements():
 	"""
-	Load CoreImprovements.xml.
+	Load CoreImprovements.xml into an usable list.
 
 	Returns
 	-------
-	xml.etree.ElementTree.Element
-		Root of the XML hierarchy.
+	list of improvement.Improvement
+		The list of improvements.
 	"""
 	tree=xml.etree.ElementTree.parse(GAME_PATH
 		+"\data\English\Core Improvements\CoreImprovements.xml")
 	root=tree.getroot()
 	# Remove DataChecksum element.
 	root.remove(root[0])
-	return root
-
-def extract_improvements(root_element):
-	"""
-	Convert XML to a list of Improvements.
-
-	Parameters
-	----------
-	root_element : xml.etree.ElementTree.Element
-		Base of the XML tree.
-
-	Returns
-	-------
-	list of Improvement
-		The list of improvements.
-	"""
-	return ()
+	# Build and return the list of Improvement.
+	r=[]
+	for e in root:
+		r.append(improvement.Improvement(e))
+	return r

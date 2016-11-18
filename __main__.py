@@ -4,7 +4,9 @@ import graph
 
 sk.check_path()
 
-elist=sk.extract_improvements(sk.load_improvements())
+elist=sk.load_improvements()
+
+elist[0].print()
 
 g=graph.citygraph()
 
