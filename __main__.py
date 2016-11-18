@@ -3,7 +3,9 @@ import graphviz
 import graph
 
 sk.check_path()
-sk.load_improvements()
+
+elist=sk.extract_improvements(sk.load_improvements())
+
 g=graph.citygraph()
 
 longtext="""Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/>

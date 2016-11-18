@@ -16,10 +16,33 @@ Open config.py and make it point to Sorcerer King's game root folder.")
 		quit()
 
 def load_improvements():
-	tree=xml.etree.ElementTree.parse(GAME_PATH+"\data\English\Core Improvements\CoreImprovements.xml")
+	"""
+	Load CoreImprovements.xml.
+
+	Returns
+	-------
+	xml.etree.ElementTree.Element
+		Root of the XML hierarchy.
+	"""
+	tree=xml.etree.ElementTree.parse(GAME_PATH
+		+"\data\English\Core Improvements\CoreImprovements.xml")
 	root=tree.getroot()
 	# Remove DataChecksum element.
 	root.remove(root[0])
-	print(tree)
-	print(root)
-	#tree=xml.etree.ElementTree.dump(tree)	
+	return root
+
+def extract_improvements(root_element):
+	"""
+	Convert XML to a list of Improvements.
+
+	Parameters
+	----------
+	root_element : xml.etree.ElementTree.Element
+		Base of the XML tree.
+
+	Returns
+	-------
+	list of Improvement
+		The list of improvements.
+	"""
+	return ()
