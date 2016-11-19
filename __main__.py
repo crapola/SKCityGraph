@@ -8,6 +8,10 @@ elist=sk.load_improvements()
 
 elist[0].print()
 
+altar=(x for x in elist if x.race=='Race_Type_Altarians')
+
+print(*altar)
+
 g=graph.citygraph()
 
 longtext="""Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/>
