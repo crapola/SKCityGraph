@@ -41,3 +41,22 @@ def load_improvements():
 			if req_level<9:
 				r.append(improvement.Improvement(e))
 	return r
+
+def fix_icons(improvements):
+	"""
+	Replace ArtDefs by full path to PNG.
+	"""
+	art_xml=xml.etree.ElementTree.parse(GAME_PATH
+		+"\data\English\Core Improvements\ArtImprovements.xml").getroot()
+
+	icons_path=GAME_PATH+"\Gfx\Medallions\Improvements\\"
+
+	for i in improvements:
+		artdef=i.icon
+		e=art_xml.find("ImprovementTypeArtDef[@InternalName='"+artdef+"']")
+		if e:
+			f=e.find('ImprovementTypeArtSubPack').find('Medallions').findtext('All')
+			print(artdef,f)
+			i.icon=icons_path+f
+		else:
+			pass#i.icon='test.png'
