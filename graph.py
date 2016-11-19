@@ -67,7 +67,7 @@ def build_edges(improvements):
 	"""
 	edges=[]
 	for x in improvements:
-		p=x.required_improvement
-		if p:
-			edges.append( (p,x.internal_name) )
+		p=x.required_improvements
+		for r in p:
+			edges.append( (r,x.internal_name) )
 	return edges

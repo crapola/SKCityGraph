@@ -9,22 +9,16 @@ class Improvement:
 		self.description=e.findtext('Description')
 		self.cost=e.findtext('LaborToBuild')
 
-		# There's always only one requirement.
-		# TODO: No! The order of forge has 3!
-		self.required_improvement=e.findtext('RequiredImprovement')
+		self.required_improvements=[r.text for r in e.findall('RequiredImprovement')]
 
-		# Get race prereq, also assumes there's only one.
+		# Get the race prereq if any.
 		prereqs=e.findall('Prereq')
 		r=next((x for x in prereqs if x.findtext('Type')=='Race'),None)
 		self.race=r.findtext('Attribute') if r else None
 
-		# Get ability prereq if any.
+		# Get the ability prereq if any.
 		r=next((x for x in prereqs if x.findtext('Type')=='AbilityBonusOption'),None)
 		self.required_ability=r.findtext('Attribute') if r else None
-
-		
-
-
 
 	def print(self):
 		print(self.__dict__)
