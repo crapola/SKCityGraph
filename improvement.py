@@ -7,13 +7,23 @@ class Improvement:
 		self.icon=e.findtext('ArtDef')
 		self.display_name=e.findtext('DisplayName')
 		self.description=e.findtext('Description')
+		self.cost=e.findtext('LaborToBuild')
+
 		# There's always only one requirement.
+		# TODO: No! The order of forge has 3!
 		self.required_improvement=e.findtext('RequiredImprovement')
+
 		# Get race prereq, also assumes there's only one.
 		prereqs=e.findall('Prereq')
 		r=next((x for x in prereqs if x.findtext('Type')=='Race'),None)
 		self.race=r.findtext('Attribute') if r else None
-		self.cost=123
+
+		# Get ability prereq if any.
+		r=next((x for x in prereqs if x.findtext('Type')=='AbilityBonusOption'),None)
+		self.required_ability=r.findtext('Attribute') if r else None
+
+		
+
 
 
 	def print(self):

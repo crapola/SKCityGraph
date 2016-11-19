@@ -65,4 +65,9 @@ def build_edges(improvements):
 	list of pair
 		Edges.
 	"""
-	pass
+	edges=[]
+	for x in improvements:
+		p=x.required_improvement
+		if p:
+			edges.append( (p,x.internal_name) )
+	return edges

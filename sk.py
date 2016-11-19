@@ -33,5 +33,11 @@ def load_improvements():
 	# Build and return the list of Improvement.
 	r=[]
 	for e in root:
-		r.append(improvement.Improvement(e))
+		# Ignore resource type improvements (shrines etc)
+		if e.find('RequiresResource')==None and e.find('HideInBuildList')==None\
+		and e.findtext('LaborToBuild')!='0' and e.find('IsOutpostUpgrade')==None:
+			req_level=e.findtext('ReqCityLevel')
+			req_level=int(req_level) if req_level!=None else 0
+			if req_level<9:
+				r.append(improvement.Improvement(e))
 	return r

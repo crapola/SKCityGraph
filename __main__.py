@@ -6,7 +6,11 @@ sk.check_path()
 
 buildings=sk.load_improvements()
 
-altar=(x for x in buildings if x.race=='Race_Type_Altarians')
+altar=[x for x in buildings \
+if (x.race=='Race_Type_Altarians' or x.race==None) and x.required_ability==None]
+
+for a in altar:
+	print(a.__dict__,'\n')
 
 # Fix icons here
 
@@ -17,8 +21,6 @@ for x in altar]
 nodes=altar_nodes
 
 edges=graph.build_edges(altar)
-
-edges=(('A','B'),('B','Z'))
 
 #---
 
