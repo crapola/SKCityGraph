@@ -1,4 +1,5 @@
 import config
+import textwrap
 
 class Improvement:
 	def __init__(self,e):
@@ -8,6 +9,7 @@ class Improvement:
 		self.internal_name=e.get('InternalName')
 		self.display_name=e.findtext('DisplayName')
 		self.description=e.findtext('Description')
+		self.wrap_description()
 		self.cost=e.findtext('LaborToBuild')
 
 		self.required_improvements=[r.text for r in e.findall('RequiredImprovement')]
@@ -31,3 +33,11 @@ class Improvement:
 
 	def print(self):
 		print(self.__dict__)
+
+	def wrap_description(self):
+		"""
+		Graphviz doesn't support word wrapping.
+		We have to add line breaks ourselves.
+		"""
+		lines=textwrap.wrap(self.description,50)
+		self.description="<br/>".join(lines)

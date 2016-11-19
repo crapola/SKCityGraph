@@ -11,8 +11,8 @@ if (x.race=='Race_Type_Altarians' or x.race==None) and x.required_ability==None]
 
 sk.fix_icons(altar)
 
-for a in altar:
-	print(a.__dict__,'\n')
+#for a in altar:
+#	print(a.__dict__,'\n')
 
 altar_nodes=[
 graph.citygraph_node(x.internal_name,x.icon,x.display_name,x.description,x.cost)

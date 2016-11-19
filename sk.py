@@ -33,7 +33,7 @@ def load_improvements():
 	# Build and return the list of Improvement.
 	r=[]
 	for e in root:
-		# Ignore resource type improvements (shrines etc)
+		# Filter out things that aren't buildings.
 		if e.find('RequiresResource')==None and e.find('HideInBuildList')==None\
 		and e.findtext('LaborToBuild')!='0' and e.find('IsOutpostUpgrade')==None:
 			req_level=e.findtext('ReqCityLevel')
@@ -56,7 +56,4 @@ def fix_icons(improvements):
 		e=art_xml.find("ImprovementTypeArtDef[@InternalName='"+artdef+"']")
 		if e:
 			f=e.find('ImprovementTypeArtSubPack').find('Medallions').findtext('All')
-			print(artdef,f)
 			i.icon=icons_path+f
-		else:
-			pass#i.icon='test.png'
