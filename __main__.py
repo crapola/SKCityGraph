@@ -4,29 +4,25 @@ import graph
 
 sk.check_path()
 
-elist=sk.load_improvements()
+buildings=sk.load_improvements()
 
-elist[0].print()
+altar=(x for x in buildings if x.race=='Race_Type_Altarians')
 
-altar=(x for x in elist if x.race=='Race_Type_Altarians')
+# Fix icons here
 
-print(*altar)
+altar_nodes=[
+graph.citygraph_node(x.internal_name,'test.png',x.display_name,x.description,x.cost)
+for x in altar]
+
+nodes=altar_nodes
+
+edges=graph.build_edges(altar)
+
+edges=(('A','B'),('B','Z'))
+
+#---
 
 g=graph.citygraph()
-
-longtext="""Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br/>
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br/>
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut<br/>
-aliquip ex ea commodo consequat.<br/>
-"""
-
-nodes=(
-graph.citygraph_node('A','test.png','Display Name!',longtext,112212),
-graph.citygraph_node('B','test.png','Display Name!22','blah...',212),
-('Z',{}),
-('Unit12435',{})
-)
-edges=(('A','B'),('B','Z'))
 
 for x in nodes:
 	g.node(x[0],**x[1])

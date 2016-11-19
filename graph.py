@@ -51,3 +51,18 @@ def citygraph():
 	edge_attr={'color':'#FFCC00'}
 	return graphviz.Digraph('City Graph','A visualization...','tree',
 		None,'svg',None,None,graph_attr,node_attr,edge_attr)
+
+def build_edges(improvements):
+	"""
+	Create edges from Improvement list.
+
+	Parameters
+	----------
+	improvements : list of Improvement
+
+	Returns
+	-------
+	list of pair
+		Edges.
+	"""
+	pass
