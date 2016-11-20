@@ -31,6 +31,9 @@ def citygraph_node(internal_name,icon,display_name,description,cost):
 	</TR>
 	</TABLE>
 	>"""
+	# Processes have cost of -1
+	if cost=='-1':
+		cost='-'
 	label=html.format(icon,display_name,description,str(cost))
 	return (internal_name,{'label':label,'margin':'0.04'})
 
@@ -69,5 +72,25 @@ def build_edges(improvements):
 	for x in improvements:
 		p=x.required_improvements
 		for r in p:
-			edges.append( (r,x.internal_name) )
+			edges.append((r,x.internal_name))
 	return edges
+
+def render(nodes,edges):
+	"""
+	Assemble the graph.
+
+	Parameters
+	----------
+	nodes : list
+		Nodes in the form (id,{params})
+	edges : list
+		Edges in the form (from,to)
+	"""
+	g=citygraph()
+	for x in nodes:
+		g.node(x[0],**x[1])
+	g.edges(edges)
+	try:
+		f=g.render()
+	except RuntimeError as r:
+		print("Rendering failed:",r)

@@ -55,5 +55,5 @@ def fix_icons(improvements):
 		artdef=i.icon
 		e=art_xml.find("ImprovementTypeArtDef[@InternalName='"+artdef+"']")
 		if e:
-			f=e.find('ImprovementTypeArtSubPack').find('Medallions').findtext('All')
+			f=e.findtext('ImprovementTypeArtSubPack/Medallions/All')
 			i.icon=icons_path+f

@@ -1,5 +1,4 @@
 import sk
-import graphviz
 import graph
 
 sk.check_path()
@@ -18,20 +17,6 @@ altar_nodes=[
 graph.citygraph_node(x.internal_name,x.icon,x.display_name,x.description,x.cost)
 for x in altar]
 
-nodes=altar_nodes
-
 edges=graph.build_edges(altar)
 
-#---
-
-g=graph.citygraph()
-
-for x in nodes:
-	g.node(x[0],**x[1])
-
-g.edges(edges)
-
-try:
-	f=g.render()
-except RuntimeError as r:
-	print("Rendering failed:",r)
+graph.render(altar_nodes,edges)
