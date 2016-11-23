@@ -8,15 +8,15 @@ buildings=sk.load_improvements()
 altar=[x for x in buildings
 if (x.race=='Race_Type_Altarians' or x.race==None) and x.required_ability==None]
 
-sk.fix_icons(altar)
+dorf=[x for x in buildings
+if (x.race=='Race_Type_Dwarves' or x.race==None) and x.required_ability==None]
 
-#for a in altar:
-#	print(a.__dict__,'\n')
+dead=[x for x in buildings
+if (x.race=='Race_Type_Undead' or x.race==None) and x.required_ability==None]
 
-altar_nodes=[
-graph.citygraph_node(x.internal_name,x.icon,x.display_name,x.description,x.cost)
-for x in altar]
+buildings_filtered=dead
 
-edges=graph.build_edges(altar)
+for x in buildings_filtered:
+	x.print()
 
-graph.render(altar_nodes,edges)
+graph.build_graph(buildings_filtered)

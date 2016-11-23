@@ -1,4 +1,5 @@
 import graphviz
+import sk
 
 def citygraph_node(internal_name,icon,display_name,description,cost):
 	"""
@@ -77,7 +78,7 @@ def build_edges(improvements):
 
 def render(nodes,edges):
 	"""
-	Assemble the graph.
+	Render the graph.
 
 	Parameters
 	----------
@@ -94,3 +95,14 @@ def render(nodes,edges):
 		f=g.render()
 	except RuntimeError as r:
 		print("Rendering failed:",r)
+
+def build_graph(improvements):
+	"""
+	Build city graph from Improvement list.
+	"""
+	sk.fix_icons(improvements)
+	graph_nodes=[
+	citygraph_node(x.internal_name,x.icon,x.display_name,x.description,x.cost)
+	for x in improvements]
+	edges=build_edges(improvements)
+	render(graph_nodes,edges)
