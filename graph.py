@@ -38,9 +38,14 @@ def citygraph_node(internal_name,icon,display_name,description,cost):
 	label=html.format(icon,display_name,description,str(cost))
 	return (internal_name,{'label':label,'margin':'0.04'})
 
-def citygraph():
+def citygraph(filename):
 	"""
 	Constructs a Digraph with a predefined style.
+
+	Parameters
+	----------
+	filename : str
+		File name.
 
 	Returns
 	-------
@@ -53,7 +58,7 @@ def citygraph():
 		'color':'#FFCC00','shape':'rectangle',
 		'fontname':'Verdana','fontsize':'12.0','fontcolor':'#FFFFFF'}
 	edge_attr={'color':'#FFCC00'}
-	return graphviz.Digraph('City Graph','No comment','CityTree',
+	return graphviz.Digraph('City Graph',None,filename,
 		None,'svg',None,None,graph_attr,node_attr,edge_attr)
 
 def build_edges(improvements):
@@ -76,18 +81,20 @@ def build_edges(improvements):
 			edges.append((r,x.internal_name))
 	return edges
 
-def render(nodes,edges):
+def render(nodes,edges,filename):
 	"""
 	Render the graph.
 
 	Parameters
 	----------
 	nodes : list
-		Nodes in the form (id,{params})
+		Nodes in the form (id,{params}).
 	edges : list
-		Edges in the form (from,to)
+		Edges in the form (from,to).
+	filename : str
+		File name.
 	"""
-	g=citygraph()
+	g=citygraph(filename)
 	for x in nodes:
 		g.node(x[0],**x[1])
 	g.edges(edges)
@@ -96,7 +103,7 @@ def render(nodes,edges):
 	except RuntimeError as r:
 		print("Rendering failed:",r)
 
-def build_graph(improvements):
+def build_graph(improvements,filename):
 	"""
 	Build city graph from Improvement list.
 	"""
@@ -105,4 +112,4 @@ def build_graph(improvements):
 	citygraph_node(x.internal_name,x.icon,x.display_name,x.description,x.cost)
 	for x in improvements]
 	edges=build_edges(improvements)
-	render(graph_nodes,edges)
+	render(graph_nodes,edges,filename)
