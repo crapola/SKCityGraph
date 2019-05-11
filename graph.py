@@ -1,4 +1,6 @@
+# libs
 import graphviz
+# local
 import sk
 
 def citygraph_node(internal_name,icon,display_name,description,cost):

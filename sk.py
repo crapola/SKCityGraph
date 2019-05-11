@@ -2,10 +2,11 @@
 Functions used to access Sorcerer King data.
 """
 
-from config import GAME_PATH
-import improvement
 import os
 import xml.etree.ElementTree
+# local
+from config import GAME_PATH
+import improvement
 
 def check_path():
 	"""

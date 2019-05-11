@@ -1,2 +1,3 @@
-# Path to Sorcerer King
-GAME_PATH="F:\SteamLibraryHDD\steamapps\common\Sorcerer King - Rivals"
+# Path to Sorcerer King.
+GAME_PATH="H:\SteamEVO\steamapps\common\Sorcerer King - Rivals"
+OUTPUT_FOLDER="skgraphoutput"

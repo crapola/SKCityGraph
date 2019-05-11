@@ -31,8 +31,8 @@ class Improvement:
 		else:
 			self.icon=e.findtext('ArtDef')
 
-	def print(self):
-		print(self.__dict__)
+	def __str__(self):
+		return str(self.__dict__)
 
 	def wrap_description(self):
 		"""
